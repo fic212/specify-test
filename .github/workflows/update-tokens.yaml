@@ -1,5 +1,6 @@
 name: Generate Tokens On Input
 on:
+  workflow_dispach:
   pull_request:
     branches:
       - specify
