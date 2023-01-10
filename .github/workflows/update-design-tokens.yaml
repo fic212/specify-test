@@ -16,11 +16,11 @@ jobs:
         run: |
           specify pull \
             -r @superbet/light \
-            -C ./.specify/superbet-light.js \
+            -C ./.specify/superbet-light.json \
             -p ${{ secrets.SPECIFY_TOKEN }};
           specify pull \
             -r @superbet/dark \
-            -C ./.specify/superbet-dark.js \
+            -C ./.specify/superbet-dark.json \
             -p ${{ secrets.SPECIFY_TOKEN }};
       - name: Create Pull Request
         uses: peter-evans/create-pull-request@v3
