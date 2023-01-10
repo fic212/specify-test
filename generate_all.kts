@@ -1,12 +1,21 @@
 @file:JvmName("MyScript")
 
-import com.google.gson.Gson
-import com.google.gson.JsonElement
-import com.google.gson.JsonObject
 import java.io.File
 
 val input = File("output/tokens/color/base.json")
-val gsonTree = Gson().fromJson(input.inputStream().reader(), JsonElement::class.java)
+val colorsMap = input
+    .readText()
+    .trimIndent()
+    .replace("\n", "")
+    .replace(" ", "")
+    .removeSurrounding(prefix = "{\"color\":{\"base\":{", suffix = "}}}")
+    .split(",")
+    .associate {
+        val keyAndValue = it.split(":")
+        val key = keyAndValue.first().removeSurrounding("\"")
+        val value = keyAndValue.last().removeSurrounding(prefix = "\"", suffix = "\"}")
+        key to value
+    }
 
 val colorsOutputTextBuilder = StringBuilder()
 colorsOutputTextBuilder.append("<?xml version=\"1.0\" encoding=\"utf-8\"?>\n<resources>")
@@ -18,13 +27,8 @@ themeOutputTextBuilder.append(
             "    <style name=\"Theme.Superbet.CoreUi.Light\" parent=\"Theme.MaterialComponents.NoActionBar\">"
 )
 
-val baseColors: JsonObject =
-    gsonTree.asJsonObject.get("color").asJsonObject.get("base").asJsonObject
-
-baseColors.asMap().filterKeys {
+colorsMap.filterKeys {
     !it.startsWith("base")
-}.mapValues {
-    it.value.asJsonObject.get("value").asJsonPrimitive.toString()
 }.toSortedMap().forEach { (key, value) ->
     colorsOutputTextBuilder.append("\n    <color name=\"${key}Light\">$value</color>")
     attrsOutputTextBuilder.append("\n    <attr name=\"$key\" format=\"color\" />")
