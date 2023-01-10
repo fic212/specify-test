@@ -1,5 +1,5 @@
 {
-  "repository": "@superbet/light",
+  "repository": "@superbet/dark",
   "head": "specify",
   "base": "main",
   "rules": [
