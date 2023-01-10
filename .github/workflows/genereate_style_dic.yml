@@ -1,4 +1,4 @@
-name: Generate Tokens On Input
+name: Generate files with style dictionary
 on:
   workflow_dispatch:
   pull_request:

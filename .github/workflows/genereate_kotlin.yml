@@ -1,4 +1,4 @@
-name: Generate Tokens On Input
+name: Generate Files with kts
 on:
   workflow_dispatch:
   pull_request:
