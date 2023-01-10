@@ -12,6 +12,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
+      - uses: fwilhe2/setup-kotlin@main
       - name: Run the script
         run: kotlin ./generate_all.kts
       - name: Commit Generated Platform Deliverables

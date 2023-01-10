@@ -1,10 +1,12 @@
 @file:JvmName("MyScript")
 
+import com.google.gson.Gson
+import com.google.gson.JsonElement
+import com.google.gson.JsonObject
 import java.io.File
 
 val input = File("output/tokens/color/base.json")
-val gsonTree = com.google.gson.Gson()
-    .fromJson(input.inputStream().reader(), com.google.gson.JsonElement::class.java)
+val gsonTree = Gson().fromJson(input.inputStream().reader(), JsonElement::class.java)
 
 val colorsOutputTextBuilder = StringBuilder()
 colorsOutputTextBuilder.append("<?xml version=\"1.0\" encoding=\"utf-8\"?>\n<resources>")
@@ -16,7 +18,7 @@ themeOutputTextBuilder.append(
             "    <style name=\"Theme.Superbet.CoreUi.Light\" parent=\"Theme.MaterialComponents.NoActionBar\">"
 )
 
-val baseColors: com.google.gson.JsonObject =
+val baseColors: JsonObject =
     gsonTree.asJsonObject.get("color").asJsonObject.get("base").asJsonObject
 
 baseColors.asMap().filterKeys {
