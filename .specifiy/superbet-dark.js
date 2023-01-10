@@ -1,8 +1,8 @@
-const publicPath = './output/light';
+const publicPath = './output/dark';
 
 const colorRules = [
   {
-    name: 'Light Theme / Colors',
+    name: 'Dark Theme / Colors',
     path: `${publicPath}/`,
     filter: {
       types: ['color'],
