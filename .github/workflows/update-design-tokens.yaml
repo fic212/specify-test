@@ -15,11 +15,11 @@ jobs:
       - name: Pull design data from Specify
         run: |
           specify pull \
-            -r @@superbet/light \
+            -r @superbet/light \
             -C ./.specify/superbet-light.json \
             -p ${{ secrets.SPECIFY_TOKEN }};
           specify pull \
-            -r @@superbet/dark \
+            -r @superbet/dark \
             -C ./.specify/superbet-dark.json \
             -p ${{ secrets.SPECIFY_TOKEN }};
       - name: Create Pull Request
