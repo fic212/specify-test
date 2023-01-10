@@ -12,9 +12,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
-      - uses: fwilhe2/setup-kotlin@main
       - name: Run the script
-        run: kotlin ./generate_all.kts
+        run: kotlin ./generate_all.kts -include-runtime -d /lib/gson-2.10.1.jar; java -jar /lib/gson-2.10.1.jar
       - name: Commit Generated Platform Deliverables
         id: "auto-commit-action"
         uses: stefanzweifel/git-auto-commit-action@v4
