@@ -26,6 +26,14 @@ jobs:
             -r @superbet/iconography-single-color \
             -C ./.specify/icons-single-color.json \
             -p ${{ secrets.SPECIFY_TOKEN }};
+      - name: Run the script
+        run: kotlin ./generate_all.kts
+      - name: Commit Generated Platform Deliverables
+        id: "auto-commit-action"
+        uses: stefanzweifel/git-auto-commit-action@v4
+        with:
+          commit_message: Android resources generated
+          branch: specify
       - name: Create Pull Request
         uses: peter-evans/create-pull-request@v3
         with:

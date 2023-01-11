@@ -1,6 +1,7 @@
 @file:JvmName("MyScript")
 
 import java.io.File
+import java.util.SortedMap
 
 private val RESOURCES_START = "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n<resources>"
 private val RESOURCES_END = "\n</resources>"
@@ -13,11 +14,11 @@ val lightColorsTextBuilder = StringBuilder(RESOURCES_START)
 val darkColorsTextBuilder = StringBuilder(RESOURCES_START)
 val lightThemeTextBuilder = StringBuilder(RESOURCES_START)
     .append(
-        "    <style name=\"Theme.Superbet.CoreUi.Light\" parent=\"Theme.MaterialComponents.NoActionBar\">"
+        "\n    <style name=\"Theme.Superbet.CoreUi.Light\" parent=\"Theme.MaterialComponents.NoActionBar\">"
     )
 val darkThemeTextBuilder = StringBuilder(RESOURCES_START)
     .append(
-        "    <style name=\"Theme.Superbet.CoreUi.Dark\" parent=\"Theme.MaterialComponents.NoActionBar\">"
+        "\n    <style name=\"Theme.Superbet.CoreUi.Dark\" parent=\"Theme.MaterialComponents.NoActionBar\">"
     )
 
 val attrsSet = HashSet<String>()
@@ -49,16 +50,17 @@ darkThemeTextBuilder.append("\n    </style>").append(RESOURCES_END)
 
 // Write all strings builders to files.
 val resPath = "src/main/res/values"
+File(resPath).mkdirs()
 File("${resPath}/colors_attrs.xml").writeText(attrsTextBuilder.toString())
 File("${resPath}/colors_light.xml").writeText(lightColorsTextBuilder.toString())
-File("${resPath}/colors_dark.xml").writeText(darkColorsMap.toString())
+File("${resPath}/colors_dark.xml").writeText(darkColorsTextBuilder.toString())
 File("${resPath}/theme_light.xml").writeText(lightThemeTextBuilder.toString())
 File("${resPath}/theme_dark.xml").writeText(darkThemeTextBuilder.toString())
 
 /**
  * Parses receiver json file and return all the colors as key value map.
  */
-fun File.getColors(): Map<String, String> {
+fun File.getColors(): SortedMap<String, String> {
     return readText()
         .trimIndent()
         .replace(oldValue = "\n", newValue = "")
@@ -72,5 +74,5 @@ fun File.getColors(): Map<String, String> {
             key to value
         }.filterKeys {
             !it.startsWith("base")
-        }
+        }.toSortedMap()
 }
