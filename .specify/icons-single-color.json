@@ -24,16 +24,6 @@
         {
           "name": "kebabcasify"
         },
-        {
-          "name": "svgo",
-          "options": {
-            "svgo": {
-              "js2svg": {
-                "pretty": true
-              }
-            }
-          }
-        }
       ]
     }
   ]
