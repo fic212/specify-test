@@ -5,7 +5,7 @@
   "rules": [
     {
       "name": "Assets / Single color Vectors",
-      "path": "./output/vectors",
+      "path": "./src/main/res/drawable",
       "filter": {
         "types": [
           "vector"
@@ -23,6 +23,16 @@
         },
         {
           "name": "kebabcasify"
+        },
+        {
+          "name": "svgo",
+          "options": {
+            "svgo": {
+              "js2svg": {
+                "pretty": true
+              }
+            }
+          }
         }
       ]
     }
