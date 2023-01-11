@@ -1,0 +1,40 @@
+{
+  "repository": "@superbet/light",
+  "head": "specify",
+  "base": "main",
+  "rules": [
+    {
+      "name": "Assets / Single color Vectors",
+      "path": "./output/vectors",
+      "filter": {
+        "types": [
+          "vector"
+        ]
+      },
+      "parsers": [
+        {
+          "name": "filter",
+          "options": {
+            "key": "value.format",
+            "regex": {
+              "pattern": "svg"
+            }
+          }
+        },
+        {
+          "name": "kebabcasify"
+        },
+        {
+          "name": "svgo",
+          "options": {
+            "svgo": {
+              "js2svg": {
+                "pretty": true
+              }
+            }
+          }
+        }
+      ]
+    }
+  ]
+}

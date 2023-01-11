@@ -22,6 +22,10 @@ jobs:
             -r @superbet/dark \
             -C ./.specify/superbet-dark.json \
             -p ${{ secrets.SPECIFY_TOKEN }};
+          specify pull \
+            -r @superbet/iconography-single-color \
+            -C ./.specify/icons-single-color.json \
+            -p ${{ secrets.SPECIFY_TOKEN }};
       - name: Create Pull Request
         uses: peter-evans/create-pull-request@v3
         with:
