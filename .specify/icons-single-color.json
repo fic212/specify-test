@@ -5,7 +5,7 @@
   "rules": [
     {
       "name": "Assets / Single color Vectors",
-      "path": "./src/main/res/drawable",
+      "path": "./output/vectors",
       "filter": {
         "types": [
           "vector"

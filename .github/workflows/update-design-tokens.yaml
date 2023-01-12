@@ -28,6 +28,12 @@ jobs:
             -p ${{ secrets.SPECIFY_TOKEN }};
       - name: Run the script
         run: kotlin ./generate_all.kts
+      - name: Install npm
+        - uses: bahmutov/npm-install@v1
+        - run: npm svg2vectordrawable
+      - name: Convert svgs to xmls
+        - run: |
+            s2v -f output/vectors -o src/main/res/drawable
       - name: Create Pull Request
         uses: peter-evans/create-pull-request@v3
         with:
