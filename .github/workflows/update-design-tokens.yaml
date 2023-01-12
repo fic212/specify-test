@@ -26,6 +26,10 @@ jobs:
             -r @superbet/icon-test-single-icon \
             -C ./.specify/icons-single-color.json \
             -p ${{ secrets.SPECIFY_TOKEN }};
+          specify pull \
+            -r @superbet/iconography-multi-color \
+            -C ./.specify/icons-multi-color.json \
+            -p ${{ secrets.SPECIFY_TOKEN }};
       - name: Run the script
         run: kotlin ./generate_all.kts
       - name: Install svg2vectordrawable

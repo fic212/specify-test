@@ -1,10 +1,10 @@
 {
-  "repository": "@superbet/iconography-single-color",
+  "repository": "@superbet/iconography-multi-color",
   "head": "specify",
   "base": "main",
   "rules": [
     {
-      "name": "Assets / Single color Vectors",
+      "name": "Assets / Multi color Vectors",
       "path": "./output/vectors",
       "filter": {
         "types": [
