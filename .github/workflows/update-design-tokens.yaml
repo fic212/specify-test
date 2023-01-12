@@ -23,7 +23,7 @@ jobs:
             -C ./.specify/superbet-dark.json \
             -p ${{ secrets.SPECIFY_TOKEN }};
           specify pull \
-            -r @superbet/icon-test-single-icon \
+            -r @superbet/iconography-single-color \
             -C ./.specify/icons-single-color.json \
             -p ${{ secrets.SPECIFY_TOKEN }};
           specify pull \
