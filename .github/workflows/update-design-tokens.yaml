@@ -32,7 +32,8 @@ jobs:
         run: npm install svg2vectordrawable -g
       - name: Convert svgs to xmls
         run: |
-            s2v -f output/vectors -o src/main/res/drawable
+          mkdir -p /src/main/res/drawable;
+          s2v -f output/vectors -o src/main/res/drawable
       - name: Create Pull Request
         uses: peter-evans/create-pull-request@v3
         with:
