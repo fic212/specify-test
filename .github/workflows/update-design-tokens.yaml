@@ -38,9 +38,9 @@ jobs:
         run: |
           mkdir -p src/main/res/drawable;
           s2v -f output/vectors -o src/main/res/drawable
-      #      - name: Delete output folder
-      #        run: |
-      #          rm -r output
+      - name: Delete output folder
+        run: |
+          rm -r output
       - name: Create Pull Request
         uses: peter-evans/create-pull-request@v3
         with:

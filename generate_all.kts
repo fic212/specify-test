@@ -35,19 +35,21 @@ darkColorsMap.forEach { (key, value) ->
 
 // Add all multicolor vectors to attrs and themes.
 File("output/vectors/").listFiles()?.forEach {
-    val nameWithoutExtension = it.nameWithoutExtension
+    val nameWithoutExtension = it.nameWithoutExtension.replace(oldValue = "-", newValue = "_")
     if (nameWithoutExtension.endsWith(suffix = "_light")) {
         val fileNameWithoutSuffix = nameWithoutExtension.removeSuffix("_light")
         val attrName = fileNameWithoutSuffix.snakeToLowerCamelCase()
-        attrsSet.add(attrName to "reference")
 
+        attrsSet.add(attrName to "reference")
         lightThemeTextBuilder.append("\n        <item name=\"$attrName\">@drawable/${fileNameWithoutSuffix}_light</item>")
         darkThemeTextBuilder.append("\n        <item name=\"$attrName\">@drawable/${fileNameWithoutSuffix}_dark</item>")
     }
 }
 
 // Append all attrs to attrs string builder.
-attrsSet.forEach { (key, format) ->
+attrsSet.sortedWith(
+    compareBy({ it.second }, { it.first })
+).forEach { (key, format) ->
     attrsTextBuilder.append("\n    <attr name=\"$key\" format=\"$format\" />")
 }
 
