@@ -6,10 +6,13 @@
   "rules": [
     {
       "name": "Superbet colors",
-      "path": "./output/superbet-colors",
       "parsers": [
         {
           "name": "to-style-dictionary",
+          "output": {
+            "type": "directory",
+            "directoryPath": "output/tokens/"
+          },
           "options": {
             "formatName": "snakeCase",
             "formatTokens": {
