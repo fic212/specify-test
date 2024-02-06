@@ -5,13 +5,18 @@
   "version": "2",
   "rules": [
     {
-      "name": "SDTF",
+      "name": "Superbet colors",
+      "path": "./output/superbet-colors",
       "parsers": [
         {
-          "name": "to-sdtf",
-          "output": {
-            "type": "file",
-            "filePath": "output/tokens.json"
+          "name": "to-style-dictionary",
+          "options": {
+            "formatName": "snakeCase",
+            "formatTokens": {
+              "colorFormat": {
+                "format": "hex8"
+              }
+            }
           }
         }
       ]
